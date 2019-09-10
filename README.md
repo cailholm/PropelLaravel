@@ -24,7 +24,8 @@ Require this package with composer using the following command:
 
 After updating composer, add the ServiceProviders to the providers array in `app/config/app.php`
 
-    Propel\PropelLaravel\PropelIntegrationServiceProvider::class,
+        \Propel\PropelLaravel\GeneratorServiceProvider::class,
+        \Propel\PropelLaravel\RuntimeServiceProvider::class,
 
 Next step is copy example config to your `app/config` directory.
 
@@ -60,9 +61,13 @@ Auth
 
 Package contains Auth driver binding which allows to store user info and fetch (`Auth::getUser()`) current logged in user as propel model. You need to change two settings in `config/auth.php`:
 
-    'driver' => 'propel', // custom auth provider implemented in current package
-    …
-    'model' => MyApp\Models\User::class, // classname of user entity
+    'providers' => [
+        'users' => [
+            'driver' => 'propel',
+            'model' => MyApp\Models\User::class, // classname of user entity
+        ],
+     ],
+
 
 After schema creating and model generation you must enhance your model to implement all laravel Auth requirements. Generic user model seems so:
 
