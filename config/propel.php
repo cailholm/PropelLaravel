@@ -175,7 +175,7 @@ return [
                         'precision' => 3,
                         'pad' => 8,
                     ],
-                    'memory' => [
+                    'mem' => [
                         'precision' => 3,
                         'pad' => 8,
                     ],
